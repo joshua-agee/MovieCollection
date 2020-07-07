@@ -1,6 +1,9 @@
 {
   "name": "moviecollection",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.3.0"
+  },
   "description": "Second Project for SEI",
   "main": "server.js",
   "scripts": {
