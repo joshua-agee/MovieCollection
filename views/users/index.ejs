@@ -11,5 +11,14 @@
     <a href="/users/new">Create a new User</a>
 
     <a href="/">Home</a>
+
+    <h3>Current Users</h3>
+    <ul>
+        <% for (let i=0; i<users.length; i++) { %>
+            <li>
+                <%= users[i].username %>
+            </li>
+        <% } %>
+    </ul>
 </body>
 </html>

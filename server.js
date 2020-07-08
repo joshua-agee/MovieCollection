@@ -6,6 +6,7 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
+
 //___________________
 //Port
 //___________________
@@ -16,10 +17,10 @@ const PORT = process.env.PORT || 3000;
 //Database
 //___________________
 // How to connect to the database either via heroku or locally
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/'+ `movieCollection`;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ `movieCollection`;
 
 // Connect to Mongo
-mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true});
+mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true, useUnifiedTopology: true});
 
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
