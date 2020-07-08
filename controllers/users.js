@@ -27,6 +27,24 @@ router.get('/:id', (req, res)=>{
         }
     })
 })
+//edit
+router.get('/:id/edit', (req, res)=>{
+    User.findById(req.params.id, (err, foundUser)=>{
+        if(err) {console.log(err)} else {
+            res.render('users/edit.ejs', {
+                user: foundUser
+            })
+        }
+    })
+})
+//Update
+router.put('/:id', (req, res)=>{
+    User.findByIdAndUpdate(req.params.id, req.body, {useFindAndModify: false}, (err, updatedUser)=>{
+        if (err) {console.log(err)} else {
+            res.redirect(`/users/${req.params.id}`);
+        }
+    })
+})
 
 //Create
 router.post('/', (req, res)=>{
