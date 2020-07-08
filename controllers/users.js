@@ -55,5 +55,12 @@ router.post('/', (req, res)=>{
         }
     })
 })
+//Destroy
+router.delete('/:id', (req,res)=>{
+    User.findByIdAndRemove(req.params.id, {useFindAndModify: false}, (err)=>{
+        if (err) {console.log(err)} else {
+            res.redirect('/users');
+        }});
+    });
 
 module.exports = router;
