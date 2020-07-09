@@ -4,6 +4,7 @@
     <%- include ('../partials/header.ejs') %>
 </head>
 <body>
+    <div class="container">
     <h1>Edit User Info</h1>
     <form action="/users/<%=user.id%>?_method=PUT" method="POST">
         <label>
@@ -18,7 +19,8 @@
             First name:
             <input type="text" name="nickname" value="<%=user.nickname%>"/>
         </label>
-        <input type="submit" value="Update" />
+        <input type="submit" value="Update" class="button-primary"/>
     </form>
+</div>
 </body>
 </html>
