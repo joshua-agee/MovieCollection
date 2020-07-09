@@ -53,7 +53,6 @@ router.put('/:id', (req, res)=>{
 
 //Create
 router.post('/', (req, res)=>{
-    console.log('post route hit');
     User.create(req.body, (err, createdUser)=>{
         if (err) {console.log(err)} else {
             res.redirect('/users');
