@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include ('../partials/header.ejs')%>
+</head>
+<body>
+    <div class="container">
+    <h1>Edit Movie</h1>
+    <form action="/movies/<%=movie._id%>?_method=PUT" method="POST">
+        <label>
+            Title:
+            <input type="text" name="title" value="<%=movie.title%>"/>
+        </label>
+        <label>
+            Year:
+            <input type="text" name="year" value="<%=movie.year%>"/>
+        </label>
+        <label>
+            Poster Link:
+            <input type="text" name="image" value="<%=movie.image%>"/>
+        </label>
+        <input type="submit" value="Update"/>
+    </form>
+</div>
+</body>
+</html>

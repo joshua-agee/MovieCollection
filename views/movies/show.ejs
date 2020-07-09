@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/header.ejs') %>
+</head>
+<body>
+    <div class="container">
+        <h1><%= movie.title %></h1>
+        <h3><%=movie.year%></h3>
+        <img src="<%= movie.image%>" alt="<%=movie.title%>">
+        <h5>Runtime: <%=movie.runtimeStr%></h5>
+        <h5>Plot: <%= movie.plot %></h5>
+        <h5>Director(s) :</h5>
+        <ul>
+            <% for (let i=0; i<movie.directorList.length; i++){ %>
+                <li><%=movie.directorList[i].name%></li>
+            <%}%>
+        </ul>
+        <h5>Staring:</h5>
+        <ul>
+            <% for (let i=0; i<movie.starList.length; i++){ %>
+                <li>
+                    <%= movie.starList[i].name %>
+                </li>
+            <% } %>
+        </ul>
+        <a href="/movies/<%=movie._id%>/edit">Edit Movie Info</a>
+        <a href="/movies" >Return to Movie List</a>
+        <a href="/" >Return to Home Page</a>
+        <form action="/movies/<%=movie._id%>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete Movie" />
+        </form>
+    </div>
+</body>
+</html>
