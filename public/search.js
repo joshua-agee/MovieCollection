@@ -2,8 +2,8 @@
 
 const imdbTitleSearchURL = 'https://imdb-api.com/en/API/SearchTitle/k_tmoi66ix/';
 const omdbSearchURL =  'https://www.omdbapi.com/?apikey=a757985a'
-let results;
-let result;
+// let results;
+// let result;
 // use imdb api for posters and omdb for everything else? because of cap on free api key? 
 
 const searchMovieTitles = (title) =>{
@@ -15,7 +15,7 @@ const searchMovieTitles = (title) =>{
         }
     }).then(function(data) {
         return new Promise (function (resolve) {
-            results = data;
+            let results = data;
             resolve (
                 displayResults(results)
             );
@@ -34,7 +34,7 @@ const searchByID = (imdbID) =>{
         }
     }).then(function(data) {
         return new Promise (function (resolve) {
-            result = data;
+            let result = data;
             resolve (
                 displayResult(result)
             );
