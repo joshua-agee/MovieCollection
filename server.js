@@ -48,6 +48,8 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 const usersController = require('./controllers/users');
 app.use('/users', usersController);
+const moviesController = require('./controllers/movies');
+app.use('/movies', moviesController);
 //___________________
 // Routes
 //___________________
