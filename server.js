@@ -53,7 +53,9 @@ app.use('/users', usersController);
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {
-    res.render('index.ejs');
+    res.render('index.ejs', {
+        title: 'The Movie Collection'
+    });
 });
 
 //___________________

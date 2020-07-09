@@ -7,14 +7,17 @@ router.get('/', (req,res)=>{
     User.find({}, (err, foundUsers)=>{
         if (err) {console.log(err)} else {
             res.render('users/index.ejs', {
-                users: foundUsers
+                users: foundUsers,
+                title: 'User List'
             });
         }
     })
 })
 //New
 router.get('/new', (req, res)=>{
-    res.render('users/new.ejs');
+    res.render('users/new.ejs',{
+        title: 'New User'
+    });
 })
 
 //Show
@@ -22,7 +25,8 @@ router.get('/:id', (req, res)=>{
     User.findById(req.params.id, (err, foundUser)=>{
         if(err) {console.log(err)} else {
             res.render('users/show.ejs', {
-                user: foundUser
+                user: foundUser,
+                title: foundUser.name
             })
         }
     })
@@ -32,7 +36,8 @@ router.get('/:id/edit', (req, res)=>{
     User.findById(req.params.id, (err, foundUser)=>{
         if(err) {console.log(err)} else {
             res.render('users/edit.ejs', {
-                user: foundUser
+                user: foundUser,
+                title: foundUser.name
             })
         }
     })
