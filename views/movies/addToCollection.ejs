@@ -7,15 +7,52 @@
 <body>
     <div class="container">
     <h1>Movie Detail</h1>
+
     <div id="results">
     </div>
-    <form action="/" method="POST"></form>
+    <form action="/movies/" method="POST">
+        <div class="form-group">
+        <label>
+            imdbID: 
+            <input type="text" name='id' id='id'  class="form-control"/>
+        </label>
+        <label>
+            Title: 
+            <input type="text" name="title" id='title'  class="form-control"/>
+        </label>
+        <label>
+            Full Title:
+            <input type="text" name="fullTitle" id="fullTitle"  class="form-control"/>
+        </label>
+        <label>
+            Type:
+            <input type="text" name="type" id="type"  class="form-control"/>
+        </label>
+        <label>
+            Year:
+            <input type="text" name="year" id="year"  class="form-control"/>
+        </label>
+        <label>
+            Image Link:
+            <input type="text" name="image" id="image"  class="form-control"/>
+        </label>
+        <label>
+            Runtime:
+            <input type="text" name="runtimeStr" id="runtimeStr"  class="form-control"/>
+        </label><br>
+        <label>
+            Plot:
+            <textarea name="plot" id="plot" class="form-control"> </textarea>
+        </label><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </form>
 </div>
 <script>
 
     $(()=>{
         let imdbID = ejs.render('<%=imdbID%>');
-        addMovieToCollection(imdbID);
+        let result = addMovieToCollection(imdbID);
     })
 
 </script>

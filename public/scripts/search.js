@@ -100,12 +100,24 @@ const addMovieToCollection = (imdbID) =>{
         return new Promise (function (resolve) {
             let result = data;
             resolve (
-                console.log(result)
+                updateForm(result)
             );
+            return result;
         });
     }), (error) =>{
         console.log(error);
     }
+}
+
+const updateForm = (result) =>{
+    $('#id').val(result.id);
+    $('#title').val(result.title);
+    $('#fullTitle').val(result.fullTitle);
+    $('#type').val(result.type);
+    $('#year').val(result.year);
+    $('#image').val(result.image);
+    $('#runtimeStr').val(result.runtimeStr);
+    $('#plot').text(result.plot);
 }
 
 // { "Title": "The Wizard of Oz",
