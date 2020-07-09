@@ -7,16 +7,15 @@
 <body>
     <div class="container">
     <h1>Movie Detail</h1>
-    <form action="/movies/searchdetail/add/<%=imdbID%>" method="GET">
-    <input type="submit" value="Add Movie" /></form>
-    
     <div id="results">
     </div>
+    <form action="/" method="POST"></form>
 </div>
 <script>
 
     $(()=>{
-        searchByID(window.location.search.slice(8));
+        let imdbID = ejs.render('<%=imdbID%>');
+        addMovieToCollection(imdbID);
     })
 
 </script>

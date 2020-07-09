@@ -1,6 +1,8 @@
 //page for api logic
 
 const imdbTitleSearchURL = 'https://imdb-api.com/en/API/SearchTitle/k_tmoi66ix/';
+const imdbSearchByIdURL = 'https://imdb-api.com/en/API/Title/k_tmoi66ix/';
+
 const omdbSearchURL =  'https://www.omdbapi.com/?apikey=a757985a'
 // let results;
 // let result;
@@ -90,7 +92,21 @@ const displayResult = (result) =>{
         <p> ${result.Plot} </p>
     `)
 }
-
+const addMovieToCollection = (imdbID) =>{
+    $.ajax({
+        url: `${imdbSearchByIdURL}${imdbID}/FullActor`,
+        type: 'GET',
+    }).then(function(data) {
+        return new Promise (function (resolve) {
+            let result = data;
+            resolve (
+                console.log(result)
+            );
+        });
+    }), (error) =>{
+        console.log(error);
+    }
+}
 
 // { "Title": "The Wizard of Oz",
 // "Year": "1939",

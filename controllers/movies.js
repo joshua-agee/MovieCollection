@@ -1,7 +1,7 @@
 const express = require('express');
 const router= express.Router();
 const Movie = require('../models/movie');
-
+const User = require('../models/user');
 //Index
 router.get('/', (req,res)=>{
     Movie.find({}, (err, foundMovies)=>{
@@ -33,10 +33,20 @@ router.get('/searchdetail', (req, res)=>{
     })
     console.log(req.query.imdbID);
 })
-//add movie from imdb
-router.put('/searchdetail/add/:imdbID/', (req, res)=>{
-    res.send(req.params.imdbID);
+//Pull full data from IMDB and allow selection of user and comments
+router.get('/searchdetail/add/:imdbID/', (req, res)=>{
+    User.find({}, (err, foundUsers)=>{
+        if(err) {console.log(err)} else {
+            res.render('movies/addToCollection.ejs', {
+                imdbID: req.params.imdbID,
+                title: 'Add to collection',
+                users: foundUsers,
+            });
+
+        }
+    })
 })
+
 
 
 //Show
