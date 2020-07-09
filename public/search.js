@@ -1,13 +1,14 @@
 //page for api logic
 
 const imdbTitleSearchURL = 'https://imdb-api.com/en/API/SearchTitle/k_tmoi66ix/';
-const omdbTitleSearchURL =  'https://www.omdbapi.com/?apikey=a757985a'
+const omdbSearchURL =  'https://www.omdbapi.com/?apikey=a757985a'
 let results;
+let result;
 // use imdb api for posters and omdb for everything else? because of cap on free api key? 
 
 const searchMovieTitles = (title) =>{
     $.ajax({
-        url: omdbTitleSearchURL,
+        url: omdbSearchURL,
         type: "GET",
         data: {
             "s" : title,
@@ -23,7 +24,25 @@ const searchMovieTitles = (title) =>{
         console.log(error);
     }
 }
-
+const searchByID = (imdbID) =>{
+    $.ajax({
+        url: omdbSearchURL,
+        type: 'GET',
+        data: {
+            "i" : imdbID,
+            "plot" : "full"
+        }
+    }).then(function(data) {
+        return new Promise (function (resolve) {
+            result = data;
+            resolve (
+                displayResult(result)
+            );
+        });
+    }), (error) =>{
+        console.log(error);
+    }
+}
 const displayResults = (results) =>{
     // if (typeOf(results) == 'object'){
     //     $('#results').html(`
@@ -51,7 +70,7 @@ const displayResults = (results) =>{
             for (let i=0; i<results.Search.length; i++){
 
                 const $row = $('<tr>');
-                const $titleCell = $('<td>').text(results.Search[i].Title);
+                const $titleCell = $('<td>').html(`<a href="/movies/searchdetail?${results.Search[i].imdbID}" >${results.Search[i].Title}</a>`);
                 const $yearCell = $('<td>').text(results.Search[i].Year);
                 // const $ratedCell = $('<td>').text(results.Search[i].Rated);
                 // const $plotCell = $('<td>').text(results.Search[i].Plot);
@@ -62,7 +81,15 @@ const displayResults = (results) =>{
             $('#results').append($table);
         }
     // }
-        
+const displayResult = (result) =>{
+    $('#results').html(`
+        <h2> ${result.Title} </h2>
+        <img src="${result.Poster}" width="40%" >
+        <h3> ${result.Year} </h3>
+        <h4> ${result.Rated} </h4>
+        <p> ${result.Plot} </p>
+    `)
+}
 
 
 // { "Title": "The Wizard of Oz",

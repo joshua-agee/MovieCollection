@@ -25,6 +25,13 @@ router.get('/search', (req, res)=>{
         title: "Search Page"
     })
 })
+//search details page
+router.get('/searchdetail', (req, res)=>{
+    res.render('movies/searchdetail.ejs',{
+        title: 'Movie Details',
+        
+    })
+})
 
 //Show
 router.get('/:id', (req, res)=>{

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include ('../partials/header.ejs')%>
+<script src="/search.js"></script>
+</head>
+<body>
+    <div class="container">
+    <h1>Movie Detail</h1>
+    <div id="results">
+    </div>
+</div>
+<script>
+
+    $(()=>{
+        searchByID(window.location.search.slice(1));
+    })
+
+</script>
+</body>
+</html>
