@@ -7,13 +7,16 @@
 <body>
     <div class="container">
     <h1>Movie Detail</h1>
+    <form action="/movies/searchdetail/add/<%=imdbID%>?_method=PUT" method="POST">
+    <input type="submit" value="Add Movie" /></form>
+    
     <div id="results">
     </div>
 </div>
 <script>
 
     $(()=>{
-        searchByID(window.location.search.slice(1));
+        searchByID(window.location.search.slice(8));
     })
 
 </script>

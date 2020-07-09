@@ -70,7 +70,7 @@ const displayResults = (results) =>{
             for (let i=0; i<results.Search.length; i++){
 
                 const $row = $('<tr>');
-                const $titleCell = $('<td>').html(`<a href="/movies/searchdetail?${results.Search[i].imdbID}" >${results.Search[i].Title}</a>`);
+                const $titleCell = $('<td>').html(`<a href="/movies/searchdetail?imdbID=${results.Search[i].imdbID}" >${results.Search[i].Title}</a>`);
                 const $yearCell = $('<td>').text(results.Search[i].Year);
                 // const $ratedCell = $('<td>').text(results.Search[i].Rated);
                 // const $plotCell = $('<td>').text(results.Search[i].Plot);

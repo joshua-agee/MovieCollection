@@ -29,9 +29,15 @@ router.get('/search', (req, res)=>{
 router.get('/searchdetail', (req, res)=>{
     res.render('movies/searchdetail.ejs',{
         title: 'Movie Details',
-        
+        imdbID: req.query.imdbID,
     })
+    console.log(req.query.imdbID);
 })
+//add movie from imdb
+router.put('/searchdetail/add/:imdbID/', (req, res)=>{
+    res.send(req.params.imdbID);
+})
+
 
 //Show
 router.get('/:id', (req, res)=>{
