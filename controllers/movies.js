@@ -19,6 +19,12 @@ router.get('/new', (req, res)=>{
         title: 'New Movie'
     });
 })
+//search page
+router.get('/search', (req, res)=>{
+    res.render('movies/search.ejs', {
+        title: "Search Page"
+    })
+})
 
 //Show
 router.get('/:id', (req, res)=>{
