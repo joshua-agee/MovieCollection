@@ -16,13 +16,15 @@ router.get('/', (req,res)=>{
 //New
 router.get('/new', (req, res)=>{
     res.render('movies/new.ejs',{
-        title: 'New Movie'
+        title: 'New Movie',
+        currentUser: req.session.currentUser
     });
 })
 //search page
 router.get('/search', (req, res)=>{
     res.render('movies/search.ejs', {
-        title: "Search Page"
+        title: "Search Page",
+        currentUser: req.session.currentUser
     })
 })
 //search details page
@@ -30,6 +32,7 @@ router.get('/searchdetail', (req, res)=>{
     res.render('movies/searchdetail.ejs',{
         title: 'Movie Details',
         imdbID: req.query.imdbID,
+        currentUser: req.session.currentUser
     })
     console.log(req.query.imdbID);
 })
@@ -41,6 +44,7 @@ router.get('/searchdetail/add/:imdbID/', (req, res)=>{
                 imdbID: req.params.imdbID,
                 title: 'Add to collection',
                 users: foundUsers,
+                currentUser: req.session.currentUser
             });
 
         }
@@ -55,7 +59,8 @@ router.get('/:id', (req, res)=>{
         if(err) {console.log(err)} else {
             res.render('movies/show.ejs', {
                 movie: foundMovie,
-                title: foundMovie.title
+                title: foundMovie.title,
+                currentUser: req.session.currentUser
             })
         }
     })
@@ -66,7 +71,8 @@ router.get('/:id/edit', (req, res)=>{
         if(err) {console.log(err)} else {
             res.render('movies/edit.ejs', {
                 movie: foundMovie,
-                title: foundMovie.title
+                title: foundMovie.title,
+                currentUser: req.session.currentUser
             })
         }
     })

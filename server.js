@@ -61,13 +61,16 @@ const usersController = require('./controllers/users');
 app.use('/users', usersController);
 const moviesController = require('./controllers/movies');
 app.use('/movies', moviesController);
+const sessionsController = require('./controllers/sessions');
+app.use('/sessions', sessionsController);
 //___________________
 // Routes
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {
     res.render('index.ejs', {
-        title: 'The Movie Collection'
+        title: 'The Movie Collection',
+        currentUser: req.session.currentUser
     });
 });
 

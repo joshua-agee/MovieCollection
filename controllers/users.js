@@ -1,6 +1,7 @@
 const express = require('express');
 const router= express.Router();
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
 //Index
 router.get('/', (req,res)=>{
@@ -8,7 +9,8 @@ router.get('/', (req,res)=>{
         if (err) {console.log(err)} else {
             res.render('users/index.ejs', {
                 users: foundUsers,
-                title: 'User List'
+                title: 'User List',
+                currentUser: req.session.currentUser
             });
         }
     })
@@ -26,7 +28,8 @@ router.get('/:id', (req, res)=>{
         if(err) {console.log(err)} else {
             res.render('users/show.ejs', {
                 user: foundUser,
-                title: foundUser.name
+                title: foundUser.name,
+                currentUser: req.session.currentUser
             })
         }
     })
@@ -37,7 +40,8 @@ router.get('/:id/edit', (req, res)=>{
         if(err) {console.log(err)} else {
             res.render('users/edit.ejs', {
                 user: foundUser,
-                title: foundUser.name
+                title: foundUser.name,
+                currentUser: req.session.currentUser
             })
         }
     })
@@ -53,6 +57,7 @@ router.put('/:id', (req, res)=>{
 
 //Create
 router.post('/', (req, res)=>{
+    req.body.passwordHash = bcrypt.hashSync(req.body.passwordHash, bcrypt.genSaltSync(10));
     User.create(req.body, (err, createdUser)=>{
         if (err) {console.log(err)} else {
             res.redirect('/users');

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/header.ejs') %>
+</head>
+<body>
+    <div class="container">
+    <h1>Sign in to Movie Collection</h1>
+
+    <form action="/sessions" method="POST">
+        <div class="form-group">
+        <label>
+            Username:
+            <input type="text" name="username" class="form-control"/>
+        </label><br>
+        <label>
+            Password:
+            <input type="password" name="passwordHash" class="form-control"/>
+        </label><br>
+        <input type="submit" value="Sign In" class="btn btn-success" />
+    </form>
+    <a href="/" class="btn btn-primary">Cancel</a>
+
+</div>
+</body>
+</html>
