@@ -5,6 +5,7 @@
 </head>
 <body>
     <div class="container">
+        <nav> <%- include ('../partials/nav.ejs') %> </nav>
         <h1><%= movie.title %></h1>
         <h3><%=movie.year%></h3>
         <img src="<%= movie.image%>" alt="<%=movie.title%>" width="50%">

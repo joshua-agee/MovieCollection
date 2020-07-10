@@ -6,6 +6,7 @@
 </head>
 <body>
     <div class="container">
+    <nav> <%- include ('../partials/nav.ejs') %> </nav>
     <h1>Movie Detail</h1>
     <form action="/movies/searchdetail/add/<%=imdbID%>" method="GET">
     <input type="submit" value="Add Movie" /></form>

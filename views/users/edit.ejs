@@ -5,6 +5,7 @@
 </head>
 <body>
     <div class="container">
+    <nav> <%- include ('../partials/nav.ejs') %> </nav>
     <h1>Edit User Info</h1>
     <form action="/users/<%=user.id%>?_method=PUT" method="POST" class="form-group">
         <label>
