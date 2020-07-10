@@ -7,7 +7,7 @@
     <div class="container">
         <h1><%= movie.title %></h1>
         <h3><%=movie.year%></h3>
-        <img src="<%= movie.image%>" alt="<%=movie.title%>" width="70%">
+        <img src="<%= movie.image%>" alt="<%=movie.title%>" width="50%">
         <h5>Runtime: <%=movie.runtimeStr%></h5>
         <h5>Plot: <%= movie.plot %></h5>
         <h5>Director(s) :</h5>
@@ -24,11 +24,11 @@
                 </li>
             <% } %>
         </ul>
-        <a href="/movies/<%=movie._id%>/edit">Edit Movie Info</a>
-        <a href="/movies" >Return to Movie List</a>
-        <a href="/" >Return to Home Page</a>
-        <form action="/movies/<%=movie._id%>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete Movie" />
+        <a href="/movies/<%=movie._id%>/edit"class="btn btn-primary">Edit Movie Info</a>
+        <a href="/movies" class="btn btn-primary">Return to Movie List</a>
+        <a href="/" class="btn btn-primary">Return to Home Page</a>
+        <form action="/movies/<%=movie._id%>?_method=DELETE" method="POST" style="margin-top: 8px;">
+        <input type="submit" value="Delete Movie" class="btn btn-danger"/>
         </form>
     </div>
 </body>
