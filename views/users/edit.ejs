@@ -6,10 +6,10 @@
 <body>
     <div class="container">
     <h1>Edit User Info</h1>
-    <form action="/users/<%=user.id%>?_method=PUT" method="POST">
+    <form action="/users/<%=user.id%>?_method=PUT" method="POST" class="form-group">
         <label>
             Username:
-            <input type="text" name="username" value="<%=user.username%>"/>
+            <input type="text" name="username" value="<%=user.username%>" class="form-control"/>
         </label>
         <!-- <label>
             Password:
@@ -17,9 +17,9 @@
         </label> -->
         <label>
             First name:
-            <input type="text" name="nickname" value="<%=user.nickname%>"/>
+            <input type="text" name="nickname" value="<%=user.nickname%>" class="form-control"/>
         </label>
-        <input type="submit" value="Update" class="button-primary"/>
+        <input type="submit" value="Update" class="btn btn-primary"/>
     </form>
 </div>
 </body>
