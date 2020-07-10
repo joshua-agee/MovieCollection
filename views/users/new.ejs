@@ -8,19 +8,21 @@
     <h1>Sign up for Movie Collection</h1>
 
     <form action="/users" method="POST">
+        <div class="form-group">
         <label>
             Username:
-            <input type="text" name="username" />
-        </label>
+            <input type="text" name="username" class="form-control"/>
+        </label><br>
         <label>
             Password:
-            <input type="password" name="passwordHash" />
-        </label>
+            <input type="password" name="passwordHash" class="form-control"/>
+        </label><br>
         <label>
             First name:
-            <input type="text" name="nickname" />
-        </label>
-        <input type="submit" value="Sign Up" />
+            <input type="text" name="nickname" class="form-control"/>
+        </label><br>
+        <input type="submit" value="Sign Up" class="btn btn-primary" />
+    </div>
     </form>
 </div>
 </body>
