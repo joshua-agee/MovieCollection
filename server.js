@@ -7,6 +7,7 @@ const mongoose = require ('mongoose');
 require('dotenv').config();
 const app = express ();
 const db = mongoose.connection;
+const session = require('express-session');
 
 //___________________
 //Port
@@ -44,6 +45,15 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+
+//use express session
+app.use(
+    session({
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: false
+    })
+)
 //___________________
 //Routers
 //___________________
