@@ -8,7 +8,8 @@ router.get('/', (req,res)=>{
         if (err) {console.log(err)} else {
             res.render('movies/index.ejs', {
                 movies: foundMovies,
-                title: 'Movie List'
+                title: 'Movie List',
+                currentUser: req.session.currentUser
             });
         }
     })
