@@ -54,6 +54,16 @@ app.use(
         saveUninitialized: false
     })
 )
+//enforce authentication
+const isAuthenticated = (req, res, next) =>{
+    if (req.session.currentUser) {
+        return next()
+    } else {
+        res.redirect('/sessions/new')
+    }
+}
+app.use('/users', isAuthenticated);
+app.use('/movies', isAuthenticated);
 //___________________
 //Routers
 //___________________

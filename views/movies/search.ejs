@@ -8,12 +8,12 @@
     <div class="container">
     <nav> <%- include ('../partials/nav.ejs') %> </nav>
     <h1>Search Movies</h1>
-    <form class="movie-search">
+    <form class="form-group">
         <label>
             Title:
-            <input type="text" name="title" id="title"/>
+            <input type="text" name="title" id="title" class="form-control"/>
         </label>
-        <input type="submit" value="Search" id="submit"/>
+        <input type="submit" value="Search" id="submit" class="btn btn-primary"/>
     </form>
     <div id="results">
     </div>

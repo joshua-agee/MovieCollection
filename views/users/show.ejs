@@ -7,16 +7,19 @@
     <div class="container">
         <nav> <%- include ('../partials/nav.ejs') %> </nav>
         <h1><%= user.name %></h1>
-        <h3>Hi <%=user.nickname%>!</h3>
-        <h3>Here's your current collection of movies:</h3>
+        <h3><%=user.nickname%>'s Profile</h3>
+        <h3>Here's <%=user.nickname%>'s' current collection of movies:</h3>
         <ul>
             <% if (user.movieCollection.length >0 ) {for (let i=0; i<user.movieCollection; i++){ %>
                 <li>
                     <%= user.movieCollection[i].fullTitle %>
                 </li>
             <%} } else { %>
-                You don't have any movies in your collection yet, <a href="#">add some here!</a>
+                There are no movies in this collection yet!
             <% } %>
+            <% if (user.username == currentUser.username){ %>
+                <a href="/movies">add some here!</a>
+            <%}%>
         </ul>
         <a href="/users/<%=user.id%>/edit"class="btn btn-primary">Edit User Info</a>
         <a href="/users" class="btn btn-primary">Return to User List</a>
