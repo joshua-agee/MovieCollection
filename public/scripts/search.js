@@ -118,6 +118,7 @@ const updateForm = (result) =>{
     $('#image').val(result.image);
     $('#runtimeStr').val(result.runtimeStr);
     $('#plot').text(result.plot);
+    $('.spinner-border').remove();
 }
 
 // { "Title": "The Wizard of Oz",
