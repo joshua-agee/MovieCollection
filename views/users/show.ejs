@@ -13,6 +13,7 @@
             <% if (user.movieCollection.length >0 ) {%>
                 <% for (let i=0; i<user.movieCollection.length; i++){ %>
                 <li>
+                    <img src="<%= user.movieCollection[i].movieImage %>" width="100px" >
                     <a href="/movies/<%=user.movieCollection[i].movie_id%>"><%= user.movieCollection[i].movieTitle %></a>
                 </li>
             <%} } else { %>

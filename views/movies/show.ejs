@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <%- include ('../partials/header.ejs') %>
-    
+    <script src="/scripts/ejs.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -12,24 +12,12 @@
         <img src="<%= movie.image%>" alt="<%=movie.title%>" width="50%">
         <h5>Runtime: <%=movie.runtimeStr%></h5>
         <h5>Plot: <%= movie.plot %></h5>
-        <h5>Director(s) :</h5>
-        <ul>
-            <% for (let i=0; i<movie.directorList.length; i++){ %>
-                <li><%=movie.directorList[i].name%></li>
-            <%}%>
-        </ul>
-        <h5>Staring:</h5>
-        <ul>
-            <% for (let i=0; i<movie.starList.length; i++){ %>
-                <li>
-                    <%= movie.starList[i].name %>
-                </li>
-            <% } %>
-        </ul>
-        <% if (currentUser.movieCollection.find({movie_id: [<%=movie._id%>]}))
-        <form action="/movies/<%=movie._id%>/add?_method=PUT" method="POST">
-            <input type="submit" class="btn btn-success" value="Add to My Collection" />
-        </form>
+        
+       
+            <form action="/movies/<%=movie._id%>/add?_method=PUT" method="POST">
+                <input type="submit" class="btn btn-success" value="Add to My Collection" />
+            </form>
+        
         <a href="/movies/<%=movie._id%>/edit"class="btn btn-primary">Edit Movie Info</a>
         <a href="/movies" class="btn btn-primary">Return to Movie List</a>
         <a href="/" class="btn btn-primary">Return to Home Page</a>
