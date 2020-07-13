@@ -10,16 +10,17 @@
         <h3><%=user.nickname%>'s Profile</h3>
         <h3>Here's <%=user.nickname%>'s' current collection of movies:</h3>
         <ul>
-            <% if (user.movieCollection.length >0 ) {for (let i=0; i<user.movieCollection; i++){ %>
+            <% if (user.movieCollection.length >0 ) {%>
+                <% for (let i=0; i<user.movieCollection.length; i++){ %>
                 <li>
-                    <%= user.movieCollection[i].fullTitle %>
+                    <a href="/movies/<%=user.movieCollection[i].movie_id%>"><%= user.movieCollection[i].movieTitle %></a>
                 </li>
             <%} } else { %>
                 There are no movies in this collection yet!
+                <% if (user.username == currentUser.username){ %>
+                    <a href="/movies">add some here!</a>
+                <%}%>
             <% } %>
-            <% if (user.username == currentUser.username){ %>
-                <a href="/movies">add some here!</a>
-            <%}%>
         </ul>
         <a href="/users/<%=user.id%>/edit"class="btn btn-primary">Edit User Info</a>
         <a href="/users" class="btn btn-primary">Return to User List</a>

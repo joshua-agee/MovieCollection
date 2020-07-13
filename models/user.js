@@ -9,7 +9,10 @@ const userSchema = new mongoose.Schema({
     passwordHash: {type: String, required: true}, //password hash
     nickname: {type: String}, // friendly name
     movieCollection: [{
-        movie: Movie.schema,
+        movie_id: {type: String, required: true}, //mongodb ID from movie collection
+        movieTitle: {type: String},
+        movieYear: {type: String},
+        movieImage: {type: String},
         userComments: {type: String},
     }],
 });

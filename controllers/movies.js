@@ -2,6 +2,7 @@ const express = require('express');
 const router= express.Router();
 const Movie = require('../models/movie');
 const User = require('../models/user');
+
 //Index
 router.get('/', (req,res)=>{
     Movie.find({}, (err, foundMovies)=>{
@@ -86,7 +87,27 @@ router.put('/:id', (req, res)=>{
         }
     })
 })
-
+//add to user collection
+router.put('/:id/add', (req,res)=>{
+    if (!req.body.userComments){
+        req.body.userComments = ""
+    }
+    Movie.findById(req.params.id, (err, foundMovie)=>{
+        if(err){console.log(err)} else{
+            let newMovie = {
+                movie_id: foundMovie._id,
+                movieTitle: foundMovie.title,
+                movieYear: foundMovie.year,
+                movieImage: foundMovie.image,
+                userComments: req.body.userComments,
+            };
+            User.findByIdAndUpdate(req.session.currentUser._id, {$push: {movieCollection: newMovie}}, {upsert: true}, (err)=>{
+                if(err){console.log(err)} 
+                res.redirect(`/users/${req.session.currentUser._id}`);
+            })
+        }
+    })
+})
 //Create
 router.post('/', (req, res)=>{
     Movie.create(req.body, (err, createdMovie)=>{
