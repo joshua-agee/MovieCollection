@@ -62,7 +62,7 @@ const isAuthenticated = (req, res, next) =>{
         res.redirect('/sessions/new')
     }
 }
-app.use('/users', isAuthenticated);
+// app.use('/users', isAuthenticated);
 app.use('/movies', isAuthenticated);
 //___________________
 //Routers
