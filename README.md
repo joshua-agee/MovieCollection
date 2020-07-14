@@ -6,4 +6,4 @@ This app allows users to create and update their accounts on the site, and with 
 
 The two different APIs are used for two reasons : request limitations and structure of data.  The data quality provided by IMDB API is higher, but the free API key has a limit on the number of daily requests.  In this version, the higher quality data is not yet used extensively (full cast, actor info, director info, etc.) but the ground work is laid for that.  
 
-Outstanding tasks include better styling, and the ability to remove movies from a user's collection.
+Outstanding tasks include better styling, and process flow.
