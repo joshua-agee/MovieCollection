@@ -99,6 +99,8 @@ router.put('/:id/add', (req,res)=>{
                 movieTitle: foundMovie.title,
                 movieYear: foundMovie.year,
                 movieImage: foundMovie.image,
+                moviePlot: foundMovie.plot,
+                movieRuntime: foundMovie.runtimeStr,
                 userComments: req.body.userComments,
             };
             User.findByIdAndUpdate(req.session.currentUser._id, {$push: {movieCollection: newMovie}}, {upsert: true}, (err)=>{

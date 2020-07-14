@@ -9,20 +9,45 @@
         <h1><%= user.name %></h1>
         <h3><%=user.nickname%>'s Profile</h3>
         <h3>Here's <%=user.nickname%>'s' current collection of movies:</h3>
-        <ul>
+        <!-- This view adapted from bootstrap example code here :  view-source:https://getbootstrap.com/docs/4.5/examples/album/#-->
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+
             <% if (user.movieCollection.length >0 ) {%>
                 <% for (let i=0; i<user.movieCollection.length; i++){ %>
-                <li>
+
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                          <img class="bd-placeholder-img card-img-top" width="100%" src='<%=user.movieCollection[i].movieImage%>' preserveAspectRatio="xMidYMid slice" focusable="false" role="img" ><title><%= user.movieCollection[i].movieTitle%></title></img>
+                          <div class="card-body">
+                            <p class="card-text"><%= user.movieCollection[i].moviePlot%></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                              
+                              <small class="text-muted"><%= user.movieCollection[i].movieYear%></small>
+                              <small class="text-muted"><%= user.movieCollection[i].movieRuntime%></small>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                <!-- <li>
                     <img src="<%= user.movieCollection[i].movieImage %>" width="100px" >
                     <a href="/movies/<%=user.movieCollection[i].movie_id%>"><%= user.movieCollection[i].movieTitle %></a>
-                </li>
+                </li> -->
+
+
+
             <%} } else { %>
                 There are no movies in this collection yet!
                 <% if (user.username == currentUser.username){ %>
                     <a href="/movies">add some here!</a>
                 <%}%>
             <% } %>
-        </ul>
+                </div>
+            </div>
+        </div>
+
         <a href="/users/<%=user.id%>/edit"class="btn btn-primary">Edit User Info</a>
         <a href="/users" class="btn btn-primary">Return to User List</a>
         <a href="/" class="btn btn-primary">Return to Home Page</a>

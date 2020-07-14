@@ -8,12 +8,12 @@
     <%- include ('./partials/nav.ejs') %>
     <h1>Welcome to the Movie Collection!</h1>
     <p>Create a library of your movies, and add your own reviews</p>
-
-    <a href="/users/new" class="btn btn-primary" role="button">Sign Up</a>
-    <a href="/sessions/new" class="btn btn-primary" role="button">Login</a>
+    <% if (!currentUser){ %>
+        <a href="/users/new" class="btn btn-primary" role="button">Sign Up</a>
+        <a href="/sessions/new" class="btn btn-primary" role="button">Sign in</a>
+    <% } %>
     <% if(currentUser){ %>
     <a href="/users" class="btn btn-primary" role="button">Show Users</a>
-    <a href="/movies/new" class="btn btn-primary" role="button">Enter a new Movie</a>
     <a href="/movies" class="btn btn-primary" role="button">Show Movies</a>
     <%}%>
 </div>

@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
         movieTitle: {type: String},
         movieYear: {type: String},
         movieImage: {type: String},
+        moviePlot: {type: String},
         userComments: {type: String},
     }],
 });
