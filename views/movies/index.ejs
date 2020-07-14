@@ -7,16 +7,45 @@
     <div class="container">
     <nav> <%- include ('../partials/nav.ejs') %> </nav>
     <h1>Movie Collection Movies<h1>
-
-        
         <h3>Movies Available to add to your Collection</h3>
-        <ul>
-            <% for (let i=0; i<movies.length; i++) { %>
-                <li>
-                    <a href="/movies/<%=movies[i]._id %>"><%= movies[i].title %></a>
-                </li>
-                <% } %>
-            </ul>
+
+        <!-- This view adapted from bootstrap example code here :  view-source:https://getbootstrap.com/docs/4.5/examples/album/#-->
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+
+            <% if (movies.length >0 ) {%>
+                <% for (let i=0; i<movies.length; i++){ %>
+
+                    <div class="col-md-4">
+                        <a href="/movies/<%= movies[i]._id%>">
+                        <div class="card mb-4 shadow-sm">
+                          <img class="bd-placeholder-img card-img-top" width="100%" src='<%=movies[i].image%>' preserveAspectRatio="xMidYMid slice" focusable="false" role="img" ><title><%= movies[i].title%></title></img>
+                          <div class="card-body">
+                            <!-- <p class="card-text"><%= movies[i].plot%></p> -->
+                            <div class="d-flex justify-content-between align-items-center">
+                              
+                              <small class="text-muted"><%= movies[i].year%></small>
+                              <small class="text-muted"><%= movies[i].runtimeStr%></small>
+                            </div>
+                          </div>
+                        </div>
+                        </a>
+                    </div>
+
+
+
+
+            <%} } else { %>
+                There are no movies in this collection yet!
+                <% if (user.username == currentUser.username){ %>
+                    <a href="/movies">add some here!</a>
+                <%}%>
+            <% } %>
+                </div>
+            </div>
+        </div>
+
             <a href="/movies/new" class="btn btn-primary">Enter a new movie Manually</a>
         
             <a href="/movies/search" class="btn btn-primary">Search Online for New Movies</a><br>
