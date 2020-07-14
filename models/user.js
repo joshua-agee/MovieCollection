@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
         movieYear: {type: String},
         movieImage: {type: String},
         moviePlot: {type: String},
+        movieRuntime: {type: String},
         userComments: {type: String},
     }],
 });

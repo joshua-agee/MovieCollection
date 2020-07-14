@@ -80,7 +80,7 @@ router.post('/', (req, res)=>{
 router.delete('/:id', isAuthenticated, (req,res)=>{
     User.findByIdAndRemove(req.params.id, {useFindAndModify: false}, (err)=>{
         if (err) {console.log(err)} else {
-            res.redirect('/users');
+            res.redirect('/');
         }});
     });
 
