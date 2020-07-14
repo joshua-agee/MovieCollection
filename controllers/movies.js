@@ -118,6 +118,15 @@ router.post('/', (req, res)=>{
         }
     })
 })
+//remove from users collection
+router.delete('/remove/:id', (req, res)=>{
+    User.findByIdAndUpdate(req.session.currentUser._id,
+        {$pull: {movieCollection: {movie_id: req.params.id}}}, (err)=> {
+        if (err) {console.log(err)} 
+    });
+    res.redirect(`/users/${req.session.currentUser._id}`);
+})
+
 //Destroy
 router.delete('/:id', (req,res)=>{
     Movie.findByIdAndRemove(req.params.id, {useFindAndModify: false}, (err)=>{

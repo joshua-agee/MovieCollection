@@ -18,6 +18,10 @@
                 <input type="submit" class="btn btn-success" value="Add to My Collection" />
             </form><br>
         
+            <form action="/movies/remove/<%=movie._id%>?_method=DELETE" method="POST" style="margin-top: 8px;">
+                <input type="submit" value="Remove From My Collection" class="btn btn-danger"/>
+            </form>
+
         <a href="/movies/<%=movie._id%>/edit"class="btn btn-primary">Edit Movie Info</a>
         <a href="/movies" class="btn btn-primary">Return to Movie List</a>
         <a href="/" class="btn btn-primary">Return to Home Page</a>
